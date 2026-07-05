@@ -8,6 +8,7 @@ import Trust from "@/components/Trust";
 import Services from "@/components/Services";
 import WhyNoxiqo from "@/components/WhyNoxiqo";
 import AboutMe from "@/components/AboutMe";
+import TeamMember from "@/components/TeamMember";
 import Process from "@/components/Process";
 import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
@@ -68,6 +69,7 @@ export default function Home() {
           <Services />
           <WhyNoxiqo />
           <AboutMe />
+          <TeamMember />
           <Process />
           <Portfolio />
           <Testimonials />
