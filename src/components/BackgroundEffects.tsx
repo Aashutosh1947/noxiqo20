@@ -15,52 +15,33 @@ export default function BackgroundEffects() {
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden bg-primary-bg">
       {/* Subtle Grid Texture */}
-      <div className="absolute inset-0 grid-texture opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 grid-texture opacity-20 pointer-events-none" />
 
-      {/* Dark Navy Atmospheric Background Glow */}
-      <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-dark-navy opacity-30 blur-[120px]" />
-      <div className="absolute bottom-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-dark-navy opacity-30 blur-[120px]" />
+      {/* Dark Navy Atmospheric Background Glows (Static for performance) */}
+      <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-dark-navy opacity-20 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-dark-navy opacity-20 blur-[120px] pointer-events-none" />
 
-      {/* Interactive Glowing Orb 1: Primary Blue */}
+      {/* Interactive Glowing Orb 1: Primary Blue (Compositor-only opacity pulse) */}
       <motion.div
-        className="absolute top-[10%] right-[15%] w-[350px] h-[350px] rounded-full bg-primary-blue opacity-15 blur-[80px]"
+        className="absolute top-[10%] right-[15%] w-[300px] h-[300px] rounded-full bg-primary-blue blur-[80px] pointer-events-none"
         animate={{
-          x: [0, 40, -30, 0],
-          y: [0, -50, 30, 0],
-          scale: [1, 1.1, 0.9, 1],
+          opacity: [0.08, 0.15, 0.08],
         }}
         transition={{
-          duration: 15,
+          duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
 
-      {/* Interactive Glowing Orb 2: Secondary Blue */}
+      {/* Interactive Glowing Orb 2: Secondary Blue (Compositor-only opacity pulse) */}
       <motion.div
-        className="absolute bottom-[15%] left-[10%] w-[400px] h-[400px] rounded-full bg-secondary-blue opacity-10 blur-[100px]"
+        className="absolute bottom-[15%] left-[10%] w-[350px] h-[350px] rounded-full bg-secondary-blue blur-[90px] pointer-events-none"
         animate={{
-          x: [0, -60, 40, 0],
-          y: [0, 40, -50, 0],
-          scale: [1, 0.85, 1.15, 1],
+          opacity: [0.06, 0.12, 0.06],
         }}
         transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* Interactive Glowing Orb 3: Accent Purple/Navy */}
-      <motion.div
-        className="absolute top-[50%] left-[40%] w-[300px] h-[300px] rounded-full bg-dark-navy opacity-20 blur-[90px]"
-        animate={{
-          x: [0, 30, -40, 0],
-          y: [0, 30, 30, 0],
-          scale: [1, 1.2, 0.8, 1],
-        }}
-        transition={{
-          duration: 18,
+          duration: 12,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -75,7 +56,7 @@ export default function BackgroundEffects() {
       />
 
       {/* Premium Noise Overlay */}
-      <div className="absolute inset-0 noise-overlay opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
     </div>
   );
 }

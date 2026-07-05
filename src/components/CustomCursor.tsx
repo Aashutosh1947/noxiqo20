@@ -12,7 +12,7 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 40, stiffness: 400, mass: 0.4 };
+  const springConfig = { damping: 40, stiffness: 450, mass: 0.35 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -25,38 +25,28 @@ export default function CustomCursor() {
       if (!isVisible) setIsVisible(true);
     };
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-
-    const handleMouseEnter = () => {
-      setIsVisible(true);
-    };
-
+    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseEnter = () => setIsVisible(true);
     const handleMouseDown = () => setClicked(true);
     const handleMouseUp = () => setClicked(false);
 
-    // Track standard hover elements
-    const addHoverListeners = () => {
-      const targets = document.querySelectorAll(
+    // High performance event delegation for hover states
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      
+      const isInteractive = target.closest(
         "a, button, [role='button'], input, textarea, select, .interactive-hover"
       );
-      targets.forEach((target) => {
-        target.addEventListener("mouseenter", () => setHovered(true));
-        target.addEventListener("mouseleave", () => setHovered(false));
-      });
+      setHovered(!!isInteractive);
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    document.addEventListener("mouseenter", handleMouseEnter);
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
-
-    // Add listeners initially and set up mutation observer to catch dynamic elements
-    addHoverListeners();
-    const observer = new MutationObserver(addHoverListeners);
-    observer.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("mousemove", moveCursor, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    document.addEventListener("mouseenter", handleMouseEnter, { passive: true });
+    window.addEventListener("mousedown", handleMouseDown, { passive: true });
+    window.addEventListener("mouseup", handleMouseUp, { passive: true });
+    document.addEventListener("mouseover", handleMouseOver, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
@@ -64,7 +54,7 @@ export default function CustomCursor() {
       document.removeEventListener("mouseenter", handleMouseEnter);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
-      observer.disconnect();
+      document.removeEventListener("mouseover", handleMouseOver);
     };
   }, [cursorX, cursorY, isVisible]);
 
@@ -87,12 +77,12 @@ export default function CustomCursor() {
           y: cursorYSpring,
         }}
         animate={{
-          scale: clicked ? 0.8 : hovered ? 1.8 : 1,
+          scale: clicked ? 0.8 : hovered ? 1.6 : 1,
           backgroundColor: hovered ? "rgba(19, 196, 245, 0.08)" : "rgba(19, 196, 245, 0)",
           borderColor: hovered ? "rgba(31, 111, 255, 0.8)" : "rgba(19, 196, 245, 0.4)",
           opacity: isVisible ? 1 : 0,
         }}
-        transition={{ type: "tween", ease: "backOut", duration: 0.2 }}
+        transition={{ type: "tween", ease: "backOut", duration: 0.15 }}
       />
       {/* Inner Dot */}
       <motion.div
@@ -105,7 +95,7 @@ export default function CustomCursor() {
           scale: clicked ? 1.5 : hovered ? 0.5 : 1,
           opacity: isVisible ? 1 : 0,
         }}
-        transition={{ type: "tween", ease: "linear", duration: 0.1 }}
+        transition={{ type: "tween", ease: "linear", duration: 0.08 }}
       />
     </>
   );

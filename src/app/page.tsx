@@ -1,8 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import LoadingScreen from "@/components/LoadingScreen";
 import BackgroundEffects from "@/components/BackgroundEffects";
 import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/Header";
@@ -18,8 +15,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-
   // SEO Structured Data (Schema markup)
   const schemaMarkup = {
     "@context": "https://schema.org",
@@ -54,43 +49,33 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
       />
 
-      {/* Loading Sequence */}
-      <LoadingScreen onComplete={() => setLoading(false)} />
-
       {/* Custom Mouse Follower */}
       <CustomCursor />
 
       {/* Fixed Atmospheric Background System */}
       <BackgroundEffects />
 
-      {/* Page Content Wrappers */}
-      {!loading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col min-h-screen relative z-10"
-        >
-          {/* Global Navigation Header */}
-          <Header />
+      {/* Page Content Wrappers (Renders instantly with zero layout shifting) */}
+      <div className="flex flex-col min-h-screen relative z-10">
+        {/* Global Navigation Header */}
+        <Header />
 
-          {/* Page Sections */}
-          <main className="flex-grow">
-            <Hero />
-            <Trust />
-            <Services />
-            <WhyNoxiqo />
-            <Process />
-            <Portfolio />
-            <Testimonials />
-            <FAQ />
-            <Contact />
-          </main>
+        {/* Page Sections */}
+        <main className="flex-grow">
+          <Hero />
+          <Trust />
+          <Services />
+          <WhyNoxiqo />
+          <Process />
+          <Portfolio />
+          <Testimonials />
+          <FAQ />
+          <Contact />
+        </main>
 
-          {/* Global Footer */}
-          <Footer />
-        </motion.div>
-      )}
+        {/* Global Footer */}
+        <Footer />
+      </div>
     </>
   );
 }
