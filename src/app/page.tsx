@@ -38,9 +38,9 @@ export default function Home() {
     },
     "description": "NOXIQO helps businesses grow with premium custom websites, conversion-focused design, and modern digital AI-powered automations.",
     "sameAs": [
-      "https://twitter.com/noxiqo",
-      "https://linkedin.com/company/noxiqo",
-      "https://github.com/noxiqo"
+      "https://x.com/1noxiqo",
+      "https://www.instagram.com/1noxiqo/",
+      "https://www.facebook.com/share/1EHPa39g9o/"
     ]
   };
 

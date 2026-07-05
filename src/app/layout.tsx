@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "NOXIQO | Premium AI-Powered Websites & Automation",
     description: "Scale your business with premium custom websites, conversion-focused design, and intelligent AI automation.",
     images: ["/og-image.jpg"],
-    creator: "@noxiqo",
+    creator: "@1noxiqo",
   },
   icons: {
     icon: "/favicon.png",
