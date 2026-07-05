@@ -49,7 +49,7 @@ export default function TeamMemberYadunadan() {
             <div className="relative group overflow-hidden rounded-[16px] border border-white/10 shadow-2xl w-full max-w-sm sm:max-w-md lg:max-w-full">
               <img
                 src="/team-yadunadan.jpg"
-                alt="Yadunadan Singh"
+                alt="Yadunandan Singh"
                 className="w-full h-auto object-cover rounded-[16px] transition-all duration-700 ease-out scale-100 hover:scale-[1.02] filter grayscale group-hover:grayscale-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -69,7 +69,7 @@ export default function TeamMemberYadunadan() {
             {/* Typography Heading & Subheading */}
             <div className="flex flex-col gap-2">
               <h2 className="text-3xl md:text-5xl font-sans font-extrabold tracking-tight text-white">
-                Yadunadan Singh
+                Yadunandan Singh
               </h2>
               <h3 className="text-base md:text-lg font-mono text-[#3B82F6] font-semibold tracking-wide">
                 SEO &amp; Content Strategist
