@@ -9,7 +9,7 @@ const navItems = [
   { name: "Services", href: "#services" },
   { name: "Portfolio", href: "#portfolio" },
   { name: "Process", href: "#process" },
-  { name: "About", href: "#why-noxiqo" },
+  { name: "About", href: "#about" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "FAQ", href: "#faq" },
   { name: "Contact", href: "#contact" },

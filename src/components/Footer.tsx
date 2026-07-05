@@ -100,7 +100,7 @@ export default function Footer() {
             {["Home", "Portfolio", "Process", "About", "Testimonials", "FAQ"].map((item) => (
               <li key={item}>
                 <a
-                  href={`#${item.toLowerCase() === "about" ? "why-noxiqo" : item.toLowerCase()}`}
+                  href={`#${item.toLowerCase()}`}
                   className="text-sm text-gray-text hover:text-white transition-colors duration-200"
                 >
                   {item}
