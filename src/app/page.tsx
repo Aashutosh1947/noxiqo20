@@ -9,6 +9,7 @@ import Services from "@/components/Services";
 import WhyNoxiqo from "@/components/WhyNoxiqo";
 import AboutMe from "@/components/AboutMe";
 import TeamMember from "@/components/TeamMember";
+import TeamMemberYadunadan from "@/components/TeamMemberYadunadan";
 import Process from "@/components/Process";
 import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
@@ -70,6 +71,7 @@ export default function Home() {
           <WhyNoxiqo />
           <AboutMe />
           <TeamMember />
+          <TeamMemberYadunadan />
           <Process />
           <Portfolio />
           <Testimonials />
